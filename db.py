@@ -1,6 +1,8 @@
 import pymysql
 from pymysql import Error
 
+# ...
+
 class Database:
     def __init__(self):
         self.connection = None

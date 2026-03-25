@@ -1,21 +1,23 @@
 import pymysql
+import os
+from dotenv import load_dotenv
 from pymysql import Error
 
-# ...
+# Load environment variables from .env file
+load_dotenv()
 
 class Database:
     def __init__(self):
         self.connection = None
         try:
             self.connection = pymysql.connect(
-                # host='localhost',
-                host='mariadb',  # cloudtype 사용 시
-                port=3306,   # cloudtype 사용 시
-                database='test',  # test 데이터베이스 사용
-                user='root',
-                password='test',  # mariadb 설치 당시의 패스워드, 실제 환경에서는 보안을 위해 환경변수 등을 사용
+                host=os.getenv('DB_HOST'),
+                port=int(os.getenv('DB_PORT', 3306)),
+                database=os.getenv('DB_NAME'),
+                user=os.getenv('DB_USER'),
+                password=os.getenv('DB_PASSWORD'),
                 charset='utf8mb4',
-                cursorclass=pymysql.cursors.DictCursor   # 쿼리 결과를 딕셔너리로 변환
+                cursorclass=pymysql.cursors.DictCursor
             )
             print("MariaDB에 성공적으로 연결되었습니다.")
         except Error as e:

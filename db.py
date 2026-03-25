@@ -13,7 +13,7 @@ class Database:
                 port=3306,   # cloudtype 사용 시
                 database='test',  # test 데이터베이스 사용
                 user='root',
-                password='비밀번호를 넣으세요',  # mariadb 설치 당시의 패스워드, 실제 환경에서는 보안을 위해 환경변수 등을 사용
+                password='test',  # mariadb 설치 당시의 패스워드, 실제 환경에서는 보안을 위해 환경변수 등을 사용
                 charset='utf8mb4',
                 cursorclass=pymysql.cursors.DictCursor   # 쿼리 결과를 딕셔너리로 변환
             )
